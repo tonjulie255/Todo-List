@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="comment-block"></ul>
+	<script>
+	/*var p1 = new Promise(function(resolve,reject){
+		setTimeout(function(){
+			resolve('Da Xu Ly Xong')
+		},1000);
+	});
+	p1
+	.then(function(data){
+		console.log(data);
+	})
+	.catch(function(err){
+		console.log('loi', err);
+	});*/
+
+	/*var fs = require('fs');
+	
+	var p2 = new Promise(function(t,j){
+		fs.readFile('./dulieu.txt', function(err, data){
+			if (err){
+				j('loi doc file')
+			}
+			else{
+				t('data.toString()')
+			}
+		})
+	});
+	p2
+	.then(function(data){
+		console.log(data);
+	})
+	.catch(function(err){
+		console.log(err)
+	})*/
+
+  //Example
+var users=[
+{
+	id: 1,
+	name: 'Giang'
+},
+{
+	id: 2,
+	name: 'Ton'
+}
+];
+
+var comments= [
+{
+	id: 1,
+	user_id: 1,
+	comment: 'Hi'
+},
+{
+	id: 2,
+	user_id:2,
+	comment: "Hello"
+}
+];
+//Fake API
+function getComments(){
+	return new Promise(function(resolve,reject){
+		setTimeout(function(){
+			resolve(comments)
+		},1000);
+	});
+};
+
+getComments()
+.then(function(comments){
+	var userIds = comments.map(function(cmt){
+		return  cmt.user_id;
+	});
+	 return getUsersByIds(userIds)
+  .then(function(users){
+  	return {
+  		users: users,
+  		comments: comments
+  	}
+  })
+.then(function(data){
+	var commentblock= documnet.getElementById('comment-block');
+	var html ="";
+		data.comments.forEach(function(comment){
+		var user= data.users.find(function(user){;
+		return user.id===comment.user
+	});
+		html += `<li> ${user.name}:+ ${comment.user_id} </li>`;
+})
+});
+ function getUsersByIds(userIds){
+ 	return new Promise(function(resolve){
+ 		var result = users.filter(function(user){
+ 			return userIds.includes(user.id);
+ 		});
+ 		setTimeout(function(){
+		resolve(result);
+ 	},1000);
+ 	});
+ };
+  
+ </script>
+
+	
+</body>
+</html>

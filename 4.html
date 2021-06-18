@@ -1,77 +1,505 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Làm một bài test nhé</title>
-	<link rel="stylesheet" type="text/css" href="4.css">
-	<meta charset="utf-8">
-</head><article>
-		<body>
-			
-			<span style="font-size:20px">
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		///Build JS Objects
+		//Object Literal
+		/*var person = {
+			firstName: "Ton ",
+			lastName: "Julie",
+			age: 16,
+			getFullName: function() {
+				return this.firstName  +  this.lastName;
+			}
+		}*/
+		    //console.log(person.getFullName());
+		    //Acess Object properties & Methods
+		   /* person.firstName="Vũ Hương ";
+		    person["lastName"] = "Giang";
+		    //console.log(person.getFullName());
+		    //console.log(person.firstName + person.lastName);*/
+ 		//Objecy Contructor
+ 		/*var person2 = new Object();
+ 		person2["firstName"] = "Lâm Hạ ";
+ 		person2["lastName"]= "An";
+ 		person2.getFullName= function() {
+ 			 return person2.firstName + person2.lastName;
+ 		}*/
+ 		//console.log(person2.getFullName());
+
+ 		//Undefined propertys or methods
+ 		//var person3= new Object();
+ 		//console.log(person3.firstName);
+
+ 		/*if(person3.hasOwnProperty('firstName')) {
+ 			//console.log(person3.firstName);
+
+ 		}
+ 		else {
+ 			//console.log("This property is not existed");
+ 		}*/
+ 		//Access Object Keys
+
+ 		//Loops
+ 		//Function for ... in 
+ 		//for(var key in person) {
+ 	    //console.log(key);}
+ 		//Pass by Reference
+ 		/*function changeReference(person){
+ 			person.firstName = "J";
+ 			person.lastName = "T";
+ 		}
+ 		changeReference(person);*/
+ 		//console.log(person.getFullName());
+ 		//Nested Ojected 
+ 		/*person.adress={
+ 			phone: 0376245161,
+ 			gmail: 'geminivu2005@gmail.com',
+ 			street: 'Hai Duong'
+ 		}*/
+ 		//console.log(person.script)
+ 	//Delete Properties From an Object
+ 	/*var ourDog={
+ 		name: "Camper",
+ 		legs: 4,
+ 		tails: 1,
+ 		bark: "bow-wow"
+ 		};
+ 	delete ourDog.bark;*/
+ 	//console.log(ourDog);
+ 	//Using Objects for Lookups
+ 	/*function  phoneticLookup(val) {
+ 		var result ="";
+ 		var lookup{
+ 			alpha: "Adams",
+ 			bravo: "Boston" ,
+ 			charlie: "Chicago",
+ 			delta: "Denver"
+ 
+ 		};
+ 		result = lookup(val);
+ 		return result;
+ 	}*/
+ 	//console.log(phoneticLookup());
+ 	//Record Collection
+ 	var collection ={
+ 		"2548" : {
+ 			"album": "Slipper When Wet",
+ 			"artist": "Bon Jovi",
+ 			"tracks": [
+ 				"Let It Rock",
+ 				"You Give Love a Bad Name"
+ 			]
+ 		},
+ 		"2468":{
+ 			"album": 1999,
+ 			"artist": "Prince",
+ 			"tracks":[
+ 				1999,
+ 				"Little Red Corvette"
+ 			] 		
+ 		},
+ 		"1245":{
+ 			"artist": "Robert Palmer",
+ 			"tracks":[]
+ 		},
+ 		"5439":{
+ 			"album": "ABBA Gold"
+ 		}
+ 	};
+ 	var collectionCopy = JSON.parse(JSON.stringify(collection));
+ 	function updateRecords(id,prop,value){
+ 		if(value===""){
+ 			delete collection[id][prop];
+ 		} else if (prop==="tracks"){
+ 			collection[id][prop]= collection[id][prop] || [];
+ 			collection[id][prop].push(value)
+ 		} else {
+ 			collection[id][prop]="value"
+ 		}
+ 		return collection;
+ 	}
+ 	updateRecords(2468,"tracks", "test");
+ 	//console.log(updateRecords(5439,"artist","ABBA"));
+ 	//Interate with while loop
+ 	var myArray = [];
+ 	var i= 0;
+ 	while(i<5){
+ 		myArray.push(i);
+ 		i++;
+ 	}
+ 	//console.log(myArray);
+ 	//Nesting For Loops
+ 	function multiplyAll(arr){
+ 		var product=1;
+ 		for (var i=0; i <arr.length;i++){
+ 			for (var k = 0;k < arr[i].length; k++) {
+ 				product *= arr[i][k];
+ 			}
+ 		}
+ 		return product;
+ 	}
+ 	var product = multiplyAll([1,2],[3,4],[5,6,7]);
+ 	//console.log(product);
+ 	//Profile Lookup 
+ 	var contacts =[
+ 	{
+ 		"firstName": "Akira",
+ 		"lastName": "Laine",
+ 		"number": "0543234567",
+ 		"likes": ["Pizza",'Coding','Brownie Points']
+ 	},
+ 	{
+ 		"firstName": "Harry",
+ 		"lastName": "Potter",
+ 		"number": "0123467896",
+ 		"likes": ["Hogwarts",'Magic','Hagrid']
+
+ 	},
+ 	{
+ 		"firstName": "Sherlock",
+ 		"lastName": "Holmes",
+ 		"number": "04567875436",
+ 		"likes": ["Intriguing Case",'Violin']
+ 	},
+ 	{
+ 		"firstName": "Kristian",
+ 		"lastName": "Vos",
+ 		"number": "0456876523",
+ 		"likes": ["JS",'Gaming','Foxes']
+ 	}
+
+
+ 	];
+ 	function lookUpProfile(name,prop){
+ 		for (var i = 0; i < contacts.length; i++) {
+ 			if (contacts[i].firstName===name) {
+ 				return contacts[i][prop] || "No such property";
+ 			}
+ 		}
+ 		return "No such contact";
+ 	};
+ 	var data = lookUpProfile("Akira","likes");
+ 	//console.log(data);
+ 	//Generate Random Fractions
+ 	function randomFraction(){
+ 		return Math.random();
+ 	}
+ 	//console.log(randomFraction());
+ 	//Generate Random Whole Numbers
+ 	var randomNumberBetween0and19 = Math.floor(Math.random() * 20);
+ 	function randomWholeNum(){
+ 		return Math.floor(Math.random() * 10);
+ 	};
+ 	//console.log(randomWholeNum());
+ 	//Generate Random Whole Numbers within a Range
+ 	function ourRandomRange(ourMin,ourMax){
+ 		return Math.floor(Math.random()* (ourMax - ourMin + 1)) + ourMin;
+ 	}
+ 	//console.log(ourRandomRange(1,9));
+ 	//Use the parseInt Function
+ 	function convertToInteger (str){
+ 		return parseInt(str);
+ 	}
+ 	//console.log(convertToInteger("56"));
+ 	//Use the parseInt Function with a Radix
+ 	function convertToInteger1(str){
+ 		return parseInt(str,2);
+ 	}
+ 	//console.log(convertToInteger1("10011"));
+ 	//Use the Conditional (Ternary) Operator
+ 	function checkEqual(a,b){
+ 		return a===b ? true:false;
+ 		return a===b;
+ 		}
+ 		//console.log(checkEqual(1,2));
+ 	
+ 	//Use Multiple Conditional (Ternary) Operators
+ 	function checkSign(num){
+ 		return num>0 ? "positive" : num < 0 ? "negative" : "zero"
+ 	}
+ 	//console.log(checkSign(10));
+ 	//Differences Between the var and let Keywords
+ 	let catName = "Quincy";
+ 	let quote;
+ 	 catName ="Beau";
+ 	function catTalk(){
+ 		"use strict ";
+ 		catName = "Oliver";
+ 		quote = catName + "says Meow!";
+ 	}
+ 	//console.log(catTalk());
+ 	//Compare Scopes of the var and let Keywords
+ 	function checkScope(){
+ 		"use strict";
+ 		let i = "function scope";
+ 		if 	(true){
+ 			var i = "block scope";
+ 			//console.log("Block scope i is: ", i);
+ 		}
+ 		//console.log("Function scope i is:" ,i);
+ 		return i;
+ 	}
+ 	//console.log(checkScope());
+ 	//Declare a Read-Only Variable with the const Keyword
+ 	function printManyTimes(str){
+ 		"use strict";
+ 		const SENTENCE = str + "is cool!";
+ 		for (let i = 0; i < str.length; i+=2) {
+ 			//console.log(SENTENCE);
+ 		}
+
+	}
+	//console.log(printManyTimes("freeCodeCamp"));
+ 		
+ 		//Mutate an Array Declared with const
+ 		const s= [5,7,2];
+ 		function editInplace(){
+ 			"use strict";
+ 			s[0]=2;
+ 			s[1]=5;
+ 			s[2]=7;
+
+ 		}
+ 		editInplace();
+ 		//console.log(s);
+
+ 	//Prevent Object Mutation 
+ 	function freezeObj(){
+ 		"use strict";
+ 		const MATH_CONSTANTS ={
+ 			PI : 3,14
+ 		};
+ 		Object.freeze(MATH_CONSTANTS);
+ 		try{
+ 			MATH_CONSTANTS.PI=99;
+ 		} catch(ex){
+ 			console.log(ex);
+ 		}
+ 		return MATH_CONSTANTS.PI
+ 	}
+ 	const PI = freezeObj();
+
+ 	//Use Arrow Functions to Write Concise Anonymous Functions
+ 	const magic = ()=> new Date();
+ 	//Write Arrow Functions with Parameters
+ 	const myConcat = (arr1,arr2)=> arr1.concat(arr2)
+ 	 	//console.log(myConcat([1,2],[3,4,5]));
+ 	 // Write Higher Order Arrow Functions
+ 	 const realNumberArray = [4,5.6,-9.8,3.14,42,6,8.34,-2];
+ 	 const squareList = (arr)=> {
+ 	 	const squareIntegers = arr.filter(num => Number.isInteger(num)&& num>0).map(x=>x*x);
+ 	 		return squareIntegers;
+ 	 };
+ 	 const squareIntegers = squareList(realNumberArray);
+ 	// console.log(squareIntegers);
+ 	//Write Higher Order Arrow Functions
+ 	const increment = (function() {
+ 		return function increment(number,value = 1){
+ 			return number + value;
+ 		};
+ 	})();
+ 	//console.log(increment(5,2));
+ 	//Use the Rest Operator with Function Parameters
+ 	const sum = (function(){
+ 		return function sum(x,y,z){
+ 			const args = [x,y,z];
+ 			return args.reduce((a,b)=> a+b,0);
+		};
+ 	})();
+ 	//console.log(sum(1,2,3,4));
+ 	//Use the Spread Operator to Evaluate Arrays In-Place
+ 	const arr4=['JAN', 'FEB','MAR','APR', 'MAY'];
+ 	let arr3;
+ 	(function(){
+ 		arr3 =[...arr4];
+ 		arr4[0]= 'potato'
+ 	})();
+ 	//console.log(arr4);
+ 	//Use Destructuring Assignment to Assign Variables from Objects
+ 	var voxel ={x:3.6,y:7,4,z:6.54};
+ 	var x = voxel.x;
+ 	var y = voxel.y;
+ 	var z = voxel.z;
+ 	const {x:a,y:b,z:c} = voxel;
+ 	const AVG_TEMPERATURES={
+ 		today : 77.5,
+ 		tomorrow: 79
+ 	};
+ 	function getTempOfTmrw(avgTemperatures){
+ 		"use strict";
+ 		const {tomorrow : tempOfTomorrow} = avgTemperatures;
+ 		return tempOfTomorrow;
+ 	}
+ 	//console.log(getTempOfTmrw(AVG_TEMPERATURES));
+ 	//Destructuring Assignment with Nested Objects
+ 	const LOCAL_FORECAST ={
+ 		today:{min:72,max:83},
+ 		tomorrow:{min:73.3,max: 84,6}
+ 	};
+ 	function getMaxOfTmrw(forecast){
+ 		"use strict";
+ 		const {tomorrow:{max:maxOfTomorrow}}= forecast;
+ 		return maxOfTomorrow;
+ 	}
+ 	//console.log(getMaxOfTmrw(LOCAL_FORECAST));
+	//Use Destructuring Assignment to Assign Variables from Arrays
+	const [t,m,,f]=[1,2,3,4,5,6];
+	console.log(z,x);
+	let g=8,q=6;
+	(()=>{
+		"use strict";
+		[g,q]=[q,g]
+	})();
+	//console.log(g);
+	//console.log(q);
+	//Use Destructuring Assignment with the Rest Operator
+	const source =[1,2,3,4,5,6,7,8,9,10];
+	function removeFirstTwo(list){
+		const [ , ,...arr] = list;
+		return arr;
+	}
+	const arr= removeFirstTwo(source);
+	//console.log(arr);
+	//console.log(source);
+	// Use Destructuring Assignment to Pass an Object as a Function's Parameters
+	const stats={
+		max: 56.78,
+		standard_deviation:4.34,
+		median:34.54,
+		min: -0.75
+	};
+	const half = (function(){
+		return function  half({max,min}) {
+			return (max+min)/2.0;
+		};
+	})();
+	//console.log(stats);
+	//console.log(half(stats));
+	//Creat String using Template Literals 		
+	const person6= {
+		name: "Zodiac Hasbro",
+		age: 56
+	};
+
+	//Template literal with multi-line and string interpolation
+	const greeting = `Hello, my name is ${person6.name}! I am ${person6.age} years old.`;
+	//console.log(greeting);
+	const result={
+		success:["max-lengths","no-amd","prefer-arrow-functions"],
+		failure:["no-var","var-on-top","linebreak"],
+		skipped:["id-blacklist", "no-dup-keys"]
+	};
+	function makeList(arr){
+		const resultDisplayArray=[];
+	for (let i = 0; i < arr.length; i++) {
+			resultDisplayArray.push(`<li class=""text-warning`>${arr[i]}``)
+	};
+	return resultDisplayArray;
+	}
+	const resultDisplayArray = makeList(result.failure));
+	//console.log(resultDisplayArray);
+	//Write Concise Object Literal Declarations Using Simple Fields
+	const creatPerson =(name,age,gender)=> {name ,age ,gender,)}
+	//console.log(createPerson("Zodiac Hasbro",56,"male"));
+	//Write Concise Declarative Functions
+	const bicycle ={
+		gear:2,
+		setGear(newGear){
+			"use strict";
+			this.gear = newGear;
+			}
+	};
+	bicycle.setGear(3);
+	//console.log(bicycle.gear);
+	//Use class Syntax to Define a Constructor Function
+	class SpaceShuttle{
+	var SpaceShuttle = function(targetPlanet){
+		this.targetPlanet = targerPlanet;
+	}
+	}
+	var zeus= new SpaceShuttle('Jupiter')
+	//console.log(zeus.targetPlanet);
+
+	function makeClass(){
+		class Vegetable{
+			constructor(name){
+				this.name= name;
+			}
+		}
+		return Vegetable;
+	}
+	const Vegetable = makeClass;
+	const carrot = new Vegetable('carrot');
+	//console.log(carrot.name);
+	//Use getters and setters to Control Access to an Object
+	class Book{
+		contructor(author){
+			this._author=author;
+		}
+		get writer(){
+			return this._author;
+		}
+		set writer(updateAuthor){
+			this._author= updateAuthor;
+		}
+	}
+	function makeClass(){
+	class Thermostat{
+		constructor(temp){
+			this._temp = 5/9*(temp-32)
+		}
+		get temperature(){
+			return this._temp;
+		}
+		set temperature(updateTemp){
+			this._temp= updateTemp;
+		}
+	}	
+		return Thermostat;
+	}
+	const Thermostat= makeClass();
+	const thermos = new Thermostat(76);
+	let temp = thermos.temperature;
+	thermos.temperature =26;
+	temp = thermos.temperature;
+	console.log(temp);
+	//Understand the Differences Between import and require
+
+//1	
+	export const capitalizeString = str=>str.toUpperCase;
+//2 giống 1
+	import {capitalizeString} from "./str_function"
+	const cap = capitalizeString('hello!');
+	//console.log(cap);
+	//Use export to Reuse a Code Block
+	 const capitalizeString = (string)=>{
+	 	return string.charAt(0).toUpperCase() + string.slice(1);
+	 }
+	 export {capitalizeString}
+	 export const foo = "bar";
+	 export const bar = "for";
+	 //Use * to Import Everything from a file
+	 import * as capitalizeStrings from "capitalize_strings";
+	 //Create an Export Fallback with export default
+	 export default function subtract(x,y){
+	 	return x-y;
+	 }
+	 //Import a Default Export
+	 import subtract from "math_functions";
+	 subtract(7,4);
+
+
+
+
+
+
+
+</script>
 	
-	<h1 align="center"><samp><strong>Mọi người có chắc là mọi người thật sự hiểu nhau không ?</strong></samp></h1>
-</span>
-</hr>
-
-<style>
-	.city{
-	background-color:tomato ;
-	color:white ;
-	border: 5px solid black ;
-	margin:2ss0px ;
-	padding:20px ;
-
-}
-</style>
-<div class="city">
-	<a href="11.html"><h2>Ngày, tháng sinh của mọi người trong phòng là gì?</h2></a>
-</div>
-
-<div class="city">
-<a href="11.html"><h2>Màu sắc yêu thích của mọi người trong phòng là gì?</h2></a>
-</div>
-
-<div class="city">
-<a href="10.html"><h2>Cảm nhận gì về lần đầu tiên gặp nhau?</h2></a>
-</div>	
-
-<div class="city">
-	<a href="10.html"><h2>Nói gì về ưu điểm của nhau?</h2></a>
-</div>
-
-<div class="city">
-<a href="10.html"><h2>Còn nhược điểm nữa?</h2>	</a>
-</div>
-
-<div class="city">
-	<a href="10.html"><h2>Chúng ta có bí mật nho nhỏ, mọi người có nhớ không?</h2></a>
-</div>
-
-<div class="city">
-	<a href=""><h2>Mọi người còn điều gì nói với nhau không?</h2></a>
-	<p>Hãy nói thật lòng và hãy nói hết những điều mà bạn muốn nói.</p>
-	<p>Hãy để hôm nay trở thành một kỉ niệm đẹp.</p>
-</div>
-
-<div class="city">
-	<h2>Sau khi trả lời những câu hỏi này mọi người cảm thấy như thế nào?</h2>
-	
-</div>
-
-<div class="city">
-<h2>Và cuối cùng...</h2>
-<p>Hôm nay mọi người cảm thấy thế nào?</p>
-<form>
-	<input type="radio" name="subject" value="không vui">Không vui
-	<input type="radio" name="subject" value="bình thường">Bình thường
-    <input type="radio" name="suject" value="vui">Vui
-    <input type="radio" name="suject" value="rất vui">Rất vui
-</form>
-<p>Có cảm thấy vui vẻ không?</p>	
-<p>Hãy cùng nhau tạo nên những kỉ niệm đẹp nhé.</p>
-</div>
-</article>
-
-</table>
-
 </body>
+</html>	
